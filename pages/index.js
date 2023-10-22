@@ -14,7 +14,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Chatty Pete - Login or Signup</title>
+        <title>TinyAide - Login or Signup</title>
+        {/* Formerly called ChattyPete */}
       </Head>
       <div className="flex justify-center items-center min-h-screen w-full bg-gray-800 text-white text-center">
         <div >
