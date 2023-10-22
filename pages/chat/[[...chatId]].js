@@ -20,9 +20,19 @@ export default function ChatPage({ chatId, title, messages: existingMessages = [
 
     const scrollableDivRef = useRef();
 
+    const scrollToTheBottom = () => {
+        if (scrollableDivRef.current) {
+            scrollableDivRef.current.scrollTo(scrollableDivRef.current.scrollWidth, scrollableDivRef.current.scrollHeight)
+        } else {
+            console.log("Not Scrolling!")
+        }
+    }
+
+    scrollToTheBottom()
     useEffect(() => {
-        scrollableDivRef.current.scrollTop = scrollableDivRef.current.scrollHeight;
-    }, []);
+        scrollToTheBottom()
+    }, [incomingMessage]);
+
 
     const router = useRouter();
 
@@ -56,6 +66,7 @@ export default function ChatPage({ chatId, title, messages: existingMessages = [
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        scrollToTheBottom()
         setGeneratingResponse(true);
         setNewChatMessages(prev => {
             return [...prev, {
